@@ -25,7 +25,7 @@ public class MyBigNumber {
         char digit1 = '0'; // biến lưu ký tự được lấy ra 
         char digit2 = '0'; 
         int tong = 0;// biến để cộng 2 kí tự cuối cùng lại với nhau 
-        int a, b;
+        int a, b; // số được lấy ra từ vị trí pos của chuỗi s1 và s2
         
         for (int i = 0; i < max; i++) { 
             pos1 = str1 - i - 1;// cập nhật vị trí của ký tự 
@@ -58,7 +58,7 @@ public class MyBigNumber {
             result = tong + result; // Lấy kết quả biến 'tong' chia lấy dư cho 10 sau đó cộng dồn vào 'result'
         }
         if (sur == 1){
-            result = 1 + result;
+            result = 1 + result; // Sau khi vòng lặp kết thúc nếu còn số dư, lấy số dư cộng vào ký tự đầu tiên của chuỗi kết quả
         }
         
         return result;
