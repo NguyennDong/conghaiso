@@ -37,7 +37,7 @@ public class MyBigNumber {
                 digit2 = s2.charAt(pos2); 
             } 
 
-            tong = (digit1 - '0') + (digit2 - '0') + nho;// chuyển ký tự thành số rồi cộng cho số dư 
+            tong = (digit1 - '0') + (digit2 - '0') + sur;// chuyển ký tự thành số rồi cộng cho số dư 
             result += (tong % 10); // Lấy kết quả biến 'tong' chia lấy dư cho 10 sau đó cộng dồn vào 'result'
             sur = tong / 10;// cập nhật lại số dư 
         }
