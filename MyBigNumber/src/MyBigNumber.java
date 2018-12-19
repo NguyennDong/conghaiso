@@ -25,6 +25,7 @@ public class MyBigNumber {
         char digit1 = '0'; // biến lưu ký tự được lấy ra 
         char digit2 = '0'; 
         int tong = 0;// biến để cộng 2 kí tự cuối cùng lại với nhau 
+        int a, b;
         
         for (int i = 0; i < max; i++) { 
             pos1 = str1 - i - 1;// cập nhật vị trí của ký tự 
@@ -32,14 +33,32 @@ public class MyBigNumber {
             
             if (pos1 >= 0) { 
                 digit1 = s1.charAt(pos1); // lấy ký tự cuối cùng của chuỗi 
+                a = digit1 - '0';
             } 
+            else{
+                a = 0;
+            }
             if (pos2 >= 0) { 
                 digit2 = s2.charAt(pos2); 
+                b = digit2 - '0';
             } 
+            else{
+                b = 0;
+            }
 
-            tong = (digit1 - '0') + (digit2 - '0') + sur;// chuyển ký tự thành số rồi cộng cho số dư 
-            result += (tong % 10); // Lấy kết quả biến 'tong' chia lấy dư cho 10 sau đó cộng dồn vào 'result'
-            sur = tong / 10;// cập nhật lại số dư 
+            tong = a + b + sur;// chuyển ký tự thành số rồi cộng cho số dư 
+            if(tong > 9){// cập nhật lại số dư 
+                sur = 1;
+                tong %= 10;
+            }
+            else{
+                sur  = 0;
+            }
+            
+            result = tong + result; // Lấy kết quả biến 'tong' chia lấy dư cho 10 sau đó cộng dồn vào 'result'
+        }
+        if (sur == 1){
+            result = 1 + result;
         }
         
         return result;
