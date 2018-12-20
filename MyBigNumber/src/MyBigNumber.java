@@ -12,12 +12,12 @@ public class MyBigNumber {
     * @param s2 chuỗi số thứ hai.
     * @return chuỗi có giá trị là tổng của hai số s1 và s2.
     */
-    
-    public String sum(final String s1, final String s2) { 
-        String result = "";// biến kết quả 
+  
+    public String[] sum(final String s1, final String s2) { 
+        String result = "";// biến kết quả phép tính
         int str1 = s1.length(); // độ dài của 2 chuỗi 
         int str2 = s2.length(); 
-
+        String[] ketqua = new String[2];
         int max = (str1 > str2) ? str1 : str2;// lấy độ dài lớn nhất giữa str1 va str2 
         int sur = 0;// biến lưu giá trị dư 
         int pos1;// vị trí cuối cùng của chuỗi số 1 và 2 
@@ -26,6 +26,9 @@ public class MyBigNumber {
         char digit2 = '0'; 
         int tong = 0;// biến để cộng 2 kí tự cuối cùng lại với nhau 
         int a, b; // số được lấy ra từ vị trí pos của chuỗi s1 và s2
+        int temp; // biến nhớ tạm
+        int temp2; 
+        String msg = ""; // Thông điệp in ra từng bước cộng.
         
         for (int i = 0; i < max; i++) { 
             pos1 = str1 - i - 1;// cập nhật vị trí của ký tự 
@@ -47,20 +50,37 @@ public class MyBigNumber {
             }
 
             tong = a + b + sur;// chuyển ký tự thành số rồi cộng cho số dư 
+            temp = sur;
+            temp2 = tong;
             if(tong > 9){// cập nhật lại số dư 
                 sur = 1;
+                temp = sur;
                 tong %= 10;
             }
             else{
                 sur  = 0;
             }
             
+            int B = i + 1;
+            if (B == 1){
+                msg += "Bước " + B + ": " + a + " + " + b + " = "
+                    + (a + b) + ". \nViết " + tong + " nhớ " + sur + "\n";
+            }
+            else if (B == max){
+                msg += "Bước " + B + ": " + a + " + " + b + " = "
+                    + (a + b) + "+" + temp +  " = " + temp2 + " . \nViết " + temp2 + "\n";
+            }
+            else{
+                msg += "Bước " + B + ": " + a + " + " + b + " = "
+                    + (a + b) + "+" + temp +  " = " + temp2 + " . \nViết " + tong + " nhớ " + sur + "\n";
+            }
             result = tong + result; // Lấy kết quả biến 'tong' chia lấy dư cho 10 sau đó cộng dồn vào 'result'
         }
         if (sur == 1){
             result = 1 + result; // Sau khi vòng lặp kết thúc nếu còn số dư, lấy số dư cộng vào ký tự đầu tiên của chuỗi kết quả
         }
-        
-        return result;
+        ketqua[0] = result;
+        ketqua[1] = msg;
+        return ketqua;
     }
 }
