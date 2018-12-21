@@ -118,17 +118,23 @@ public class MyBigNumber {
             }
             
             int B = i + 1;
-            if (B == 1){
+            if (B == 1 && temp2 == 10){
                 msg += "Bước " + B + ": " + a + " + " + b + " = "
-                    + (a + b) + ". \nViết " + tong + " nhớ " + sur + "\n";
+                    + (a + b) + ". \nViết " + temp2 + "\n";
             }
-            else if (B == max){
-                msg += "Bước " + B + ": " + a + " + " + b + " = "
-                    + (a + b) + " + " + temp +  " = " + temp2 + " . \nViết " + temp2 + "\n";
-            }
-            else{
-                msg += "Bước " + B + ": " + a + " + " + b + " = "
-                    + (a + b) + "+" + temp +  " = " + temp2 + ". \nViết " + tong + " nhớ " + sur + "\n";
+            else {
+                if (B == 1){
+                    msg += "Bước " + B + ": " + a + " + " + b + " = "
+                        + (a + b) + ". \nViết " + tong + " nhớ " + sur + "\n";
+                }
+                else if (B == max){
+                    msg += "Bước " + B + ": " + a + " + " + b + " = "
+                        + (a + b) + " + " + temp +  " = " + temp2 + " . \nViết " + temp2 + "\n";
+                }
+                else{
+                    msg += "Bước " + B + ": " + a + " + " + b + " = "
+                        + (a + b) + "+" + temp +  " = " + temp2 + ". \nViết " + tong + " nhớ " + sur + "\n";
+                }
             }
             result = tong + result; // Lấy kết quả biến 'tong' chia lấy dư cho 10 sau đó cộng dồn vào 'result'
         }
