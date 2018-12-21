@@ -33,6 +33,13 @@ public class MyBigNumber {
         String msg = ""; // Thông điệp in ra từng bước cộng.
         int i; // biến lặp
         
+        // Neu ca hai dong rong thi ket qua bang 0
+        if (s1.equals("") && s2.equals("")){
+            ketqua[0] = "0";
+            ketqua[1] = "";
+            return ketqua;
+        }
+        
         // Kiếm tra hai chuỗi đã đúng dạng hay chưa 
         ketqua[0] = "";
         for (i = 0; i < str1; i++){
@@ -103,11 +110,11 @@ public class MyBigNumber {
             }
             else if (B == max){
                 msg += "Bước " + B + ": " + a + " + " + b + " = "
-                    + (a + b) + "+" + temp +  " = " + temp2 + " . \nViết " + temp2 + "\n";
+                    + (a + b) + " + " + temp +  " = " + temp2 + " . \nViết " + temp2 + "\n";
             }
             else{
                 msg += "Bước " + B + ": " + a + " + " + b + " = "
-                    + (a + b) + "+" + temp +  " = " + temp2 + " . \nViết " + tong + " nhớ " + sur + "\n";
+                    + (a + b) + "+" + temp +  " = " + temp2 + ". \nViết " + tong + " nhớ " + sur + "\n";
             }
             result = tong + result; // Lấy kết quả biến 'tong' chia lấy dư cho 10 sau đó cộng dồn vào 'result'
         }
