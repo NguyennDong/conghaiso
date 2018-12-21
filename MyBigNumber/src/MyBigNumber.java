@@ -143,6 +143,7 @@ public class MyBigNumber {
         }
         ketqua[0] = result;
         ketqua[1] = msg;
+        
         return ketqua;
     }
 }
