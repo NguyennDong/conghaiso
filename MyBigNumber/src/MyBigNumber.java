@@ -2,6 +2,8 @@
 * Class MyBigNumber là lớp để Cộng 2 số với input là 2 chuỗi số.
 * Hàm sum trong Class MyBigNumber là hàm để thực hiện phép cộng 2 chuỗi số.
 */
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MyBigNumber { 
 
@@ -29,6 +31,36 @@ public class MyBigNumber {
         int temp; // biến nhớ tạm
         int temp2; 
         String msg = ""; // Thông điệp in ra từng bước cộng.
+        
+        for (int i = 0; i < str1; i++){
+            if (Character.isLetter(s1.charAt(i))){
+		throw new NumberFormatException("Vị trí " + (i + 1) + " trong chuỗi 1 " + s1
+                + " không phải là số");
+            }
+	}
+
+	for (int i = 0; i < str2; i++){
+            if (Character.isLetter(s2.charAt(i))) {
+                   throw new NumberFormatException("Vị Trí" + (i + 1) + " trong chuỗi 2 " + s2
+                    + " không phải là số");
+            }
+	}
+			
+	Pattern pattern1 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
+	Matcher matcher1 = pattern1.matcher(s1);
+	Pattern pattern2 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
+	Matcher matcher2 = pattern2.matcher(s2);
+			
+	if (matcher1.find()) {
+            throw new NumberFormatException("Vị trí " + (matcher1.start() + 1) + " trong chuỗi 1 " + s1
+                    + " không phải là số");
+	}
+
+	if (matcher2.find()) {
+            throw new NumberFormatException("Vị trí " + (matcher2.start() + 1) + " trong chuỗi 2 " + s2
+                    + " không phải là số");
+	}
+        
         
         for (int i = 0; i < max; i++) { 
             pos1 = str1 - i - 1;// cập nhật vị trí của ký tự 
