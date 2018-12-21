@@ -31,19 +31,21 @@ public class MyBigNumber {
         int temp; // biến nhớ tạm
         int temp2; 
         String msg = ""; // Thông điệp in ra từng bước cộng.
+        int i; // biến lặp
         
         // Kiếm tra hai chuỗi đã đúng dạng hay chưa 
-        for (int i = 0; i < str1; i++){
+        ketqua[0] = "";
+        for (i = 0; i < str1; i++){
             if (Character.isLetter(s1.charAt(i))){
-		throw new NumberFormatException("Vị trí " + (i + 1) + " trong chuỗi 1 " + s1
-                + " không phải là số");
+                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 1 " + s1 + "\nkhông phải là số";
+		return ketqua;
             }
 	}
 
-	for (int i = 0; i < str2; i++){
+	for (i = 0; i < str2; i++){
             if (Character.isLetter(s2.charAt(i))) {
-                   throw new NumberFormatException("Vị Trí" + (i + 1) + " trong chuỗi 2 " + s2
-                    + " không phải là số");
+                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 2 " + s2 + "\nkhông phải là số";
+		return ketqua;
             }
 	}
 			
@@ -53,17 +55,17 @@ public class MyBigNumber {
 	Matcher matcher2 = pattern2.matcher(s2);
 			
 	if (matcher1.find()) {
-            throw new NumberFormatException("Vị trí " + (matcher1.start() + 1) + " trong chuỗi 1 " + s1
-                    + " không phải là số");
+            ketqua[1] = "Vị trí " + (matcher1.start() + 1) + " trong chuỗi 1 " + s1 + "\nkhông phải là số";
+            return ketqua;
 	}
 
 	if (matcher2.find()) {
-            throw new NumberFormatException("Vị trí " + (matcher2.start() + 1) + " trong chuỗi 2 " + s2
-                    + " không phải là số");
+            ketqua[1] = "Vị trí " + (matcher2.start() + 1) + " trong chuỗi 1 " + s1 + "\nkhông phải là số";
+            return ketqua;
 	}
         
         // tính toán
-        for (int i = 0; i < max; i++) { 
+        for (i = 0; i < max; i++) { 
             pos1 = str1 - i - 1;// cập nhật vị trí của ký tự 
             pos2 = str2 - i - 1; 
             
