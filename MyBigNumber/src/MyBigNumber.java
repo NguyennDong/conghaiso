@@ -32,6 +32,7 @@ public class MyBigNumber {
         int temp2; 
         String msg = ""; // Thông điệp in ra từng bước cộng.
         
+        // Kiếm tra hai chuỗi đã đúng dạng hay chưa 
         for (int i = 0; i < str1; i++){
             if (Character.isLetter(s1.charAt(i))){
 		throw new NumberFormatException("Vị trí " + (i + 1) + " trong chuỗi 1 " + s1
@@ -61,7 +62,7 @@ public class MyBigNumber {
                     + " không phải là số");
 	}
         
-        
+        // tính toán
         for (int i = 0; i < max; i++) { 
             pos1 = str1 - i - 1;// cập nhật vị trí của ký tự 
             pos2 = str2 - i - 1; 
