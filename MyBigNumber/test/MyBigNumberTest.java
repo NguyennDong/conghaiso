@@ -149,4 +149,26 @@ public class MyBigNumberTest {
         String re = result[0];
         assertEquals(expResult, re);
     }
+    @Test
+    public void testSum11() {
+        System.out.println("Dong 1 chua khoang trang");
+        String s1 = "7 2";
+        String s2 = "12";
+        MyBigNumber instance = new MyBigNumber();
+        String expResult = "";
+        String[] result = instance.sum(s1, s2);
+        String re = result[0];
+        assertEquals(expResult, re);
+    }
+    @Test
+    public void testSum12() {
+        System.out.println("Dong 2 chua khoangtrang");
+        String s1 = "72";
+        String s2 = "1 2";
+        MyBigNumber instance = new MyBigNumber();
+        String expResult = "";
+        String[] result = instance.sum(s1, s2);
+        String re = result[0];
+        assertEquals(expResult, re);
+    }
 }

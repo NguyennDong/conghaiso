@@ -44,14 +44,14 @@ public class MyBigNumber {
         ketqua[0] = "";
         for (i = 0; i < str1; i++){
             if (Character.isLetter(s1.charAt(i))){
-                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 1 " + s1 + "\nkhông phải là số";
+                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
 		return ketqua;
             }
 	}
 
 	for (i = 0; i < str2; i++){
             if (Character.isLetter(s2.charAt(i))) {
-                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 2 " + s2 + "\nkhông phải là số";
+                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
 		return ketqua;
             }
 	}
@@ -62,13 +62,27 @@ public class MyBigNumber {
 	Matcher matcher2 = pattern2.matcher(s2);
 			
 	if (matcher1.find()) {
-            ketqua[1] = "Vị trí " + (matcher1.start() + 1) + " trong chuỗi 1 " + s1 + "\nkhông phải là số";
+            ketqua[1] = "Vị trí " + (matcher1.start() + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
             return ketqua;
 	}
 
 	if (matcher2.find()) {
-            ketqua[1] = "Vị trí " + (matcher2.start() + 1) + " trong chuỗi 1 " + s1 + "\nkhông phải là số";
+            ketqua[1] = "Vị trí " + (matcher2.start() + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
             return ketqua;
+	}
+        
+        for (i = 0; i < str1; i++){
+            if (Character.isSpace(s1.charAt(i))){
+                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 1: " + s1 + "\nlà khoảng trắng";
+		return ketqua;
+            }
+	}
+        
+        for (i = 0; i < str2; i++){
+            if (Character.isSpace(s2.charAt(i))){
+                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 2: " + s2 + "\nlà khoảng trắng";
+		return ketqua;
+            }
 	}
         
         // tính toán
