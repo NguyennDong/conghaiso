@@ -1,0 +1,1 @@
+1. Chạy Project bằng netbean.
