@@ -23,11 +23,11 @@ public class MyBigNumberTest implements IReceiver{
      */
     @Test
     public void testSum1() {
-        System.out.println("Ket qua nho hon 10");
-        String s1 = "5";
-        String s2 = "4";
+        System.out.println("kiem tra ket qua");
+        String s1 = "123";
+        String s2 = "987";
         MyBigNumber instance = new MyBigNumber(this);
-        String expResult = "9";
+        String expResult = "1110";
         String result = instance.sum(s1, s2);
         assertEquals(expResult, result);
     }
@@ -148,7 +148,7 @@ public class MyBigNumberTest implements IReceiver{
     }
     @Test
     public void testSum12() {
-        System.out.println("Dong 2 chua khoangtrang");
+        System.out.println("Dong 2 chua khoang trang");
         String s1 = "72";
         String s2 = "1 2";
         MyBigNumber instance = new MyBigNumber(this);

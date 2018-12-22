@@ -33,7 +33,6 @@ public class MyBigNumber {
         int str2 = s2.length(); 
         final int max = (str1 > str2) ? str1 : str2; // lấy độ dài lớn nhất giữa str1 va str2 
         String result = "";// biến kết quả phép tính
-        //String[] ketqua = new String[2];
         int sur = 0;// biến lưu giá trị dư 
         int pos1;// vị trí cuối cùng của chuỗi số 1 và 2 
         int pos2; 
@@ -46,7 +45,6 @@ public class MyBigNumber {
         int temp2; 
         String msg = ""; // Thông điệp in ra từng bước cộng
         int errorPos; // Vị trí lỗi
-        
         int s; // biến đếm bước thực hiện
         
         Pattern pattern1 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
@@ -55,7 +53,6 @@ public class MyBigNumber {
         Matcher matcher2 = pattern2.matcher(s2);
         
         // Kiếm tra hai chuỗi đã đúng dạng hay chưa 
-        //ketqua[0] = "";
         if (matcher1.find()) {
             msg = "Vị trí " + (matcher1.start() + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
             this.ireceiver.send(msg);
