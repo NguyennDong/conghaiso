@@ -147,6 +147,8 @@ public class MyBigNumberDisplay extends javax.swing.JFrame implements IReceiver{
         MyBigNumber result = new MyBigNumber(this);
         String sum = result.sum(a,b);
         jLabel4.setText(sum);
+        s1 = "";
+        s2 = "";
     }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * @param args the command line arguments
