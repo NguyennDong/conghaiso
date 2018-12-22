@@ -8,6 +8,18 @@ import java.util.regex.Pattern;
 
 public class MyBigNumber { 
     
+    private IReceiver ireceiver;
+
+    /**
+    * DesCription. 
+    * @param ireceiver
+    * 
+    */
+    
+    public MyBigNumber(final IReceiver ireceiver) {
+        this.ireceiver = ireceiver;
+    }
+    
     /**
     * Phương thức cộng 2 chuỗi số làm tham số cho hàm sum:
     * 2 chuỗi này đều chỉ chứa các kí tự số từ '0' đến '9'.
@@ -16,12 +28,12 @@ public class MyBigNumber {
     * @return chuỗi có giá trị là tổng của hai số s1 và s2.
     */
   
-    public String[] sum(final String s1, final String s2) { 
+    public String sum(final String s1, final String s2) { 
         int str1 = s1.length(); // độ dài của 2 chuỗi 
         int str2 = s2.length(); 
         final int max = (str1 > str2) ? str1 : str2; // lấy độ dài lớn nhất giữa str1 va str2 
         String result = "";// biến kết quả phép tính
-        String[] ketqua = new String[2];
+        //String[] ketqua = new String[2];
         int sur = 0;// biến lưu giá trị dư 
         int pos1;// vị trí cuối cùng của chuỗi số 1 và 2 
         int pos2; 
@@ -41,58 +53,58 @@ public class MyBigNumber {
         Pattern pattern2 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
         Matcher matcher2 = pattern2.matcher(s2);
         
+        // Kiếm tra hai chuỗi đã đúng dạng hay chưa 
+        //ketqua[0] = "";
         if (matcher1.find()) {
-            ketqua[1] = "Vị trí " + (matcher1.start() + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
+            msg = "Vị trí " + (matcher1.start() + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
+            this.ireceiver.send(msg);
+            throw new NumberFormatException(msg);
             
-            return ketqua;
         }
 
         if (matcher2.find()) {
-            ketqua[1] = "Vị trí " + (matcher2.start() + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
-            
-            return ketqua;
+            msg = "Vị trí " + (matcher2.start() + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
+            this.ireceiver.send(msg);
+            throw new NumberFormatException(msg);
         }
         
         // Neu ca hai dong rong thi ket qua bang 0
         if (s1.isEmpty() && s2.isEmpty()) {
-            ketqua[0] = "0";
-            ketqua[1] = "";
+            result = "0";
             
-            return ketqua; 
+            return result; 
         }
-        
-        // Kiếm tra hai chuỗi đã đúng dạng hay chưa 
-        ketqua[0] = "";
+
         int i = 0; // biến lặp
         for (i = 0; i < str1; i++) {
             if (Character.isLetter(s1.charAt(i))) {
-                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
-                
-                return ketqua;
+                msg = "Vị trí " + (i + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
+                this.ireceiver.send(msg);
+                throw new NumberFormatException(msg);
             }
         }
 
         for (i = 0; i < str2; i++) {
             if (Character.isLetter(s2.charAt(i))) {
-                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
-                
-                return ketqua;
+                msg = "Vị trí " + (i + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
+                this.ireceiver.send(msg);
+                throw new NumberFormatException(msg);
             }
         }
         
         for (i = 0; i < str1; i++) {
             if (Character.isSpace(s1.charAt(i))) {
-                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 1: " + s1 + "\nlà khoảng trắng";
-                
-                return ketqua;
+                msg = "Vị trí " + (i + 1) + " trong chuỗi 1: " + s1 + "\nlà khoảng trắng";
+                this.ireceiver.send(msg);
+                throw new NumberFormatException(msg);
             }
         }
         
         for (i = 0; i < str2; i++) {
             if (Character.isSpace(s2.charAt(i))) {
-                ketqua[1] = "Vị trí " + (i + 1) + " trong chuỗi 2: " + s2 + "\nlà khoảng trắng";
-                
-                return ketqua;
+                msg = "Vị trí " + (i + 1) + " trong chuỗi 2: " + s2 + "\nlà khoảng trắng";
+                this.ireceiver.send(msg);
+                throw new NumberFormatException(msg);
             }
         }
         
@@ -127,7 +139,7 @@ public class MyBigNumber {
             }
     
             s = i + 1;
-            if (s == 1 && temp2 == 10) {
+            if (max == 1 && s == max && temp2 == 10) {
                 msg += "Bước " + s + ": " + a + " + " + b + " = "
                     + (a + b) + ". \nViết " + temp2 + "\n";
             } else {
@@ -150,10 +162,9 @@ public class MyBigNumber {
             result = 1 + result; // Sau khi vòng lặp kết thúc nếu còn số dư, cộng vào ký tự đầu tiên của chuỗi kết quả
         }
         
-        ketqua[0] = result;
-        ketqua[1] = msg;
+        this.ireceiver.send(msg);
         
-        return ketqua;
+        return result;
         
     }
 }
