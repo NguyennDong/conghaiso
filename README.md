@@ -44,17 +44,29 @@ Hướng dẫn cách chạy Unit Test:
 Test Case (xem hình UnitTest.png): 
 
 Dong 2 chua ky tu dac biet
+
 Dong 1 chua khoang trang
+
 Dong 2 chua khoang trang
+
 kiem tra ket qua
+
 Dong thu nhat dai hon dong thu hai
+
 Dong thu hai dai hon dong thu nhat
+
 Dong thu nhat rong
+
 Dong thu hai rong
+
 Ca hai dong rong
+
 Dong 1 chua ky tu la chu
+
 Dong 2 chua ky tu la chu
+
 Dong 1 chua ky tu dac biet
+
 
 
 
