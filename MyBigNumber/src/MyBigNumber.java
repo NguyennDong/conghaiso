@@ -47,14 +47,14 @@ public class MyBigNumber {
         int errorPos; // Vị trí lỗi
         int s; // biến đếm bước thực hiện
         
-        Pattern pattern1 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
-        Matcher matcher1 = pattern1.matcher(s1);
-        Pattern pattern2 = Pattern.compile("[!@#$%&*()_+=|<>?{}\\\\[\\\\]~-]");
-        Matcher matcher2 = pattern2.matcher(s2);
+        Pattern pattern = Pattern.compile("\\D");// Chuỗi đại diện cho kí tự số từ 0 đến 9
+        Matcher matcher1 = pattern.matcher(s1);
+        Matcher matcher2 = pattern.matcher(s2);
         
         // Kiếm tra hai chuỗi đã đúng dạng hay chưa 
         if (matcher1.find()) {
-            msg = "Vị trí " + (matcher1.start() + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
+            msg = "Vui lòng không nhập chữ, ký tự đặt biệt hoặc khoảng trắng."
+                    + "\nVị trí " + (matcher1.start() + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
             this.ireceiver.send(msg);
             errorPos = matcher1.start() + 1;
             throw new NumberFormatException(errorPos + "");
@@ -62,7 +62,8 @@ public class MyBigNumber {
         }
 
         if (matcher2.find()) {
-            msg = "Vị trí " + (matcher2.start() + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
+            msg = "Vui lòng không nhập chữ, ký tự đặt biệt hoặc khoảng trắng."
+                    + "\nVị trí " + (matcher2.start() + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
             this.ireceiver.send(msg);
             errorPos = matcher2.start() + 1;
             throw new NumberFormatException(errorPos + "");
@@ -76,42 +77,6 @@ public class MyBigNumber {
         }
 
         int i = 0; // biến lặp
-        for (i = 0; i < str1; i++) {
-            if (Character.isLetter(s1.charAt(i))) {
-                msg = "Vị trí " + (i + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
-                this.ireceiver.send(msg);
-                errorPos = i + 1;
-                throw new NumberFormatException(errorPos + "");
-            }
-        }
-
-        for (i = 0; i < str2; i++) {
-            if (Character.isLetter(s2.charAt(i))) {
-                msg = "Vị trí " + (i + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
-                this.ireceiver.send(msg);
-                errorPos = i + 1;
-                throw new NumberFormatException(errorPos + "");
-            }
-        }
-        
-        for (i = 0; i < str1; i++) {
-            if (Character.isSpace(s1.charAt(i))) {
-                msg = "Vị trí " + (i + 1) + " trong chuỗi 1: " + s1 + "\nlà khoảng trắng";
-                this.ireceiver.send(msg);
-                errorPos = i + 1;
-                throw new NumberFormatException(errorPos + "");
-            }
-        }
-        
-        for (i = 0; i < str2; i++) {
-            if (Character.isSpace(s2.charAt(i))) {
-                msg = "Vị trí " + (i + 1) + " trong chuỗi 2: " + s2 + "\nlà khoảng trắng";
-                this.ireceiver.send(msg);
-                errorPos = i + 1;
-                throw new NumberFormatException(errorPos + "");
-            }
-        }
-        
         // tính toán
         for (i = 0; i < max; i++) { 
             pos1 = str1 - i - 1;// cập nhật vị trí của ký tự 
