@@ -1,1 +1,0 @@
-Nhan vào file MyBigNumber de chay ung dung. Nhap các sa vào 2 truong sau do bam nút "=" de thuc hien phep tinh
