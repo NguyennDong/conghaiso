@@ -45,6 +45,7 @@ public class MyBigNumber {
         int temp; // biến nhớ tạm
         int temp2; 
         String msg = ""; // Thông điệp in ra từng bước cộng
+        int errorPos; // Vị trí lỗi
         
         int s; // biến đếm bước thực hiện
         
@@ -58,14 +59,16 @@ public class MyBigNumber {
         if (matcher1.find()) {
             msg = "Vị trí " + (matcher1.start() + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
             this.ireceiver.send(msg);
-            throw new NumberFormatException(msg);
+            errorPos = matcher1.start() + 1;
+            throw new NumberFormatException(errorPos + "");
             
         }
 
         if (matcher2.find()) {
             msg = "Vị trí " + (matcher2.start() + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
             this.ireceiver.send(msg);
-            throw new NumberFormatException(msg);
+            errorPos = matcher2.start() + 1;
+            throw new NumberFormatException(errorPos + "");
         }
         
         // Neu ca hai dong rong thi ket qua bang 0
@@ -80,7 +83,8 @@ public class MyBigNumber {
             if (Character.isLetter(s1.charAt(i))) {
                 msg = "Vị trí " + (i + 1) + " trong chuỗi 1: " + s1 + "\nkhông phải là số";
                 this.ireceiver.send(msg);
-                throw new NumberFormatException(msg);
+                errorPos = i + 1;
+                throw new NumberFormatException(errorPos + "");
             }
         }
 
@@ -88,7 +92,8 @@ public class MyBigNumber {
             if (Character.isLetter(s2.charAt(i))) {
                 msg = "Vị trí " + (i + 1) + " trong chuỗi 2: " + s2 + "\nkhông phải là số";
                 this.ireceiver.send(msg);
-                throw new NumberFormatException(msg);
+                errorPos = i + 1;
+                throw new NumberFormatException(errorPos + "");
             }
         }
         
@@ -96,7 +101,8 @@ public class MyBigNumber {
             if (Character.isSpace(s1.charAt(i))) {
                 msg = "Vị trí " + (i + 1) + " trong chuỗi 1: " + s1 + "\nlà khoảng trắng";
                 this.ireceiver.send(msg);
-                throw new NumberFormatException(msg);
+                errorPos = i + 1;
+                throw new NumberFormatException(errorPos + "");
             }
         }
         
@@ -104,7 +110,8 @@ public class MyBigNumber {
             if (Character.isSpace(s2.charAt(i))) {
                 msg = "Vị trí " + (i + 1) + " trong chuỗi 2: " + s2 + "\nlà khoảng trắng";
                 this.ireceiver.send(msg);
-                throw new NumberFormatException(msg);
+                errorPos = i + 1;
+                throw new NumberFormatException(errorPos + "");
             }
         }
         

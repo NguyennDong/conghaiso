@@ -15,6 +15,8 @@ public class MyBigNumberDisplay extends javax.swing.JFrame implements IReceiver{
      */
     public MyBigNumberDisplay() {
         initComponents();
+        jTextField1.setText(s1);
+        jTextField2.setText(s2);
     }
 
     /**
@@ -132,9 +134,12 @@ public class MyBigNumberDisplay extends javax.swing.JFrame implements IReceiver{
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
+  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        if (!s1.isEmpty() && !s2.isEmpty()){
+            jTextField1.setText(s1);
+            jTextField2.setText(s2);
+        }
         
         String a = jTextField1.getText();
         String b = jTextField2.getText();
@@ -143,7 +148,6 @@ public class MyBigNumberDisplay extends javax.swing.JFrame implements IReceiver{
         String sum = result.sum(a,b);
         jLabel4.setText(sum);
     }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -178,14 +182,12 @@ public class MyBigNumberDisplay extends javax.swing.JFrame implements IReceiver{
             }
         });
         if(args.length > 0){
-            s1 =  args[0];
-            s2 = args[1];
-        }else{
-            s1 = "0";
-            s2 = "0";
+            s1 = String.valueOf(args[0]);
+            s2 = String.valueOf(args[1]);
+            
         }
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

@@ -91,7 +91,7 @@ public class MyBigNumberTest implements IReceiver{
         String result = instance.sum(s1, s2);
         } catch (Exception e) {
             assertThat(e, instanceOf(NumberFormatException.class));
-            assertEquals(e.getMessage(), "Vị trí 2 trong chuỗi 1: 7f2\nkhông phải là số");
+            assertEquals(e.getMessage(), "2");
         }
     }
     @Test
@@ -104,7 +104,7 @@ public class MyBigNumberTest implements IReceiver{
         String result = instance.sum(s1, s2);
         } catch (Exception e) {
             assertThat(e, instanceOf(NumberFormatException.class));
-            assertEquals(e.getMessage(), "Vị trí 2 trong chuỗi 2: 1t2\nkhông phải là số");
+            assertEquals(e.getMessage(), "2");
         }
     }
     @Test
@@ -117,7 +117,7 @@ public class MyBigNumberTest implements IReceiver{
         String result = instance.sum(s1, s2);
         } catch (Exception e) {
             assertThat(e, instanceOf(NumberFormatException.class));
-            assertEquals(e.getMessage(), "Vị trí 2 trong chuỗi 1: 7(*2\nkhông phải là số");
+            assertEquals(e.getMessage(), "2");
         }
     }
     @Test
@@ -130,7 +130,7 @@ public class MyBigNumberTest implements IReceiver{
         String result = instance.sum(s1, s2);
         } catch (Exception e) {
             assertThat(e, instanceOf(NumberFormatException.class));
-            assertEquals(e.getMessage(), "Vị trí 2 trong chuỗi 2: 1-2\nkhông phải là số");
+            assertEquals(e.getMessage(), "2");
         }
     }
     @Test
@@ -143,7 +143,7 @@ public class MyBigNumberTest implements IReceiver{
         String result = instance.sum(s1, s2);
         } catch (Exception e) {
             assertThat(e, instanceOf(NumberFormatException.class));
-            assertEquals(e.getMessage(), "Vị trí 2 trong chuỗi 1: 7 2\nlà khoảng trắng");
+            assertEquals(e.getMessage(), "2");
         }
     }
     @Test
@@ -156,7 +156,7 @@ public class MyBigNumberTest implements IReceiver{
         String result = instance.sum(s1, s2);
         } catch (Exception e) {
             assertThat(e, instanceOf(NumberFormatException.class));
-            assertEquals(e.getMessage(), "Vị trí 2 trong chuỗi 2: 1 2\nlà khoảng trắng");
+            assertEquals(e.getMessage(), "2");
         }
     }
 
